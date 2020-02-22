@@ -1,0 +1,7 @@
+updateTime: 90 #in seconds
+prefix: "{PREFIX} "
+random: false
+messages:
+  - "one"
+  - "two"
+  - "three"

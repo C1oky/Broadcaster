@@ -1,0 +1,5 @@
+name: Broadcaster
+main: me.kkdevs.broadcaster.Loader
+version: "1.0"
+api: "1.0.9"
+author: kkdevs
