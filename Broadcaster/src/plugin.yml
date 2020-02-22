@@ -1,5 +1,0 @@
-main: KKDevs.Broadcaster
-name: "Broadcaster"
-author: KKDevs
-version: 1.0
-api: ["1.0.7"]
