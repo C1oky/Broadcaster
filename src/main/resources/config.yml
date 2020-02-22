@@ -1,4 +1,5 @@
 updateTime: 90 #in seconds
+consoleVisible: true
 prefix: "{PREFIX} "
 random: false
 messages:

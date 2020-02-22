@@ -19,7 +19,7 @@ public class UpdaterTask extends AsyncTask {
         try {
             messagesList = config.getStringList("messages");
         } catch (Exception exception) {
-            messagesList = new ArrayList<String>();
+            messagesList = new ArrayList<>();
         }
     }
 
@@ -38,6 +38,10 @@ public class UpdaterTask extends AsyncTask {
             }
         }
 
-        Server.getInstance().broadcastMessage(message);
+        if(config.getBoolean("consoleVisible", true)) {
+            Server.getInstance().broadcastMessage(message);
+        } else {
+            Server.getInstance().getOnlinePlayers().values().forEach(player -> player.sendMessage(message));
+        }
     }
 }
