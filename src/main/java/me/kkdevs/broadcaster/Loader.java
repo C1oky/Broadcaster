@@ -22,6 +22,7 @@ public class Loader extends PluginBase {
 
         this.registerListeners();
         Server.getInstance().getScheduler().scheduleRepeatingTask(this, new UpdaterTask(), 20 * config.getInt("updateTime", 90));
+        Server.getInstance().getCommandMap().register("", new BroadcastCommand());
     }
 
     private void registerListeners() {
