@@ -2,15 +2,15 @@ package me.kkdevs.broadcaster.task;
 
 import cn.nukkit.Server;
 import cn.nukkit.scheduler.AsyncTask;
-import cn.nukkit.utils.Config;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static me.kkdevs.broadcaster.Loader.*;
+
 public class UpdaterTask extends AsyncTask {
 
-    public static final Config config = new Config("plugins/Broadcaster/config.yml", Config.YAML);
     private String prefix = config.get("prefix", "");
     private static List<String> messagesList;
     private int MESSAGES_SIZE = -1;
@@ -41,7 +41,7 @@ public class UpdaterTask extends AsyncTask {
         if(config.getBoolean("consoleVisible", true)) {
             Server.getInstance().broadcastMessage(message);
         } else {
-            Server.getInstance().getOnlinePlayers().values().forEach(player -> player.sendMessage(message));
+            Server.getInstance().getOnlinePlayers().values().forEach(player -> player.sendMessage(replace(message, player)));
         }
     }
 }

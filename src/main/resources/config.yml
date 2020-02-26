@@ -1,3 +1,4 @@
+### Broadcast messages in chat ###
 updateTime: 90 #in seconds
 consoleVisible: true
 prefix: "{PREFIX} "
@@ -6,3 +7,8 @@ messages:
   - "one"
   - "two"
   - "three"
+
+### Broadcast join/quit player messages ###
+type: popup # only 4 types: messages, popup, tip, title
+join_message: "%player_name% join to server!"
+quit_message: "%player_name% left the server"
