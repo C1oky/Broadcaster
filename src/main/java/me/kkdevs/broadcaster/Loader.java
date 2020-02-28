@@ -54,7 +54,7 @@ public class Loader extends PluginBase {
         return text
                 .replace("%player_name%", player.getName())
                 .replace("%player_displayname%", player.getDisplayName())
-                .replace("%player_ping%", Integer.toString(player.getPing()))
+                .replace("%player_ping%", (player.isOnline() ? Integer.toString(player.getPing()) : "null"))
                 .replace("%player_health%", Float.toString(player.getHealth()))
                 .replace("%player_maxhealth%", Integer.toString(player.getMaxHealth()))
                 .replace("%player_x%", Integer.toString(player.getFloorX()))
