@@ -1,9 +1,8 @@
 name: Broadcaster
-main: me.kkdevs.broadcaster.Loader
-version: "1.0"
-api: "1.0.9"
-author: kkdevs
-
+main: me.c1oky.broadcaster.Loader
+version: "1.2"
+api: ["1.0.0"]
+author: C1oky | Table Studio
 permissions:
   broadcast:
     default: op

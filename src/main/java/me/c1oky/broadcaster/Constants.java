@@ -1,35 +1,30 @@
-package me.kkdevs.broadcaster;
+package me.c1oky.broadcaster;
+
 
 import cn.nukkit.Player;
 import cn.nukkit.Server;
-import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
-import me.kkdevs.broadcaster.listener.PlayerJoinListener;
-import me.kkdevs.broadcaster.listener.PlayerQuitListener;
-import me.kkdevs.broadcaster.task.UpdaterTask;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Loader extends PluginBase {
+public class Constants {
 
-    public static Config config;
+    public static Config config = new Config("plugins/Broadcaster/config.yml", Config.YAML);
+    public static final int UPDATE_TIME = config.getInt("updateTime", 90);
+    public static final String MESSAGE_PREFIX = config.get("prefix", "");
+    public static final String JOIN_MESSAGE = config.getString("join_message", "");
+    public static final String QUIT_MESSAGE = config.get("quit_message", "");
+    public static final boolean RANDOM = config.getBoolean("random", false);
+    public static final boolean CONSOLE_VISIBLE = config.getBoolean("consoleVisible", true);
+    public static List<String> MESSAGE_LIST;
 
-    @Override
-    public void onEnable() {
-        this.saveDefaultConfig();
-
-        config = new Config("plugins/Broadcaster/config.yml", Config.YAML);
-
-        this.registerListeners();
-        Server.getInstance().getScheduler().scheduleRepeatingTask(this, new UpdaterTask(), 20 * config.getInt("updateTime", 90));
-        Server.getInstance().getCommandMap().register("", new BroadcastCommand());
-    }
-
-    private void registerListeners() {
-        Arrays.asList(
-                new PlayerJoinListener(),
-                new PlayerQuitListener()
-        ).forEach(listener -> Server.getInstance().getPluginManager().registerEvents(listener, this));
+    public static void initialization() {
+        try {
+            Constants.MESSAGE_LIST = config.getStringList("messages");
+        } catch (Exception exception) {
+            Constants.MESSAGE_LIST = new ArrayList<>();
+        }
     }
 
     public static void sendMessage(Player player, String message) {
