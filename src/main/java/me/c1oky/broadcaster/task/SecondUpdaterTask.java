@@ -46,6 +46,7 @@ public class SecondUpdaterTask extends AsyncTask {
                     return;
                 }
                 sender.sendMessage(Constants.replace(message, (Player) sender));
+                return;
             }
             sender.sendMessage(message);
         }
